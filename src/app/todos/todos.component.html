@@ -3,13 +3,9 @@
     <div class="col-md-12">
       <p>Todos list here</p>
       <ul class="list-group">
-        <li class="list-group-item d-flex">
-          <span class="flex-grow-1">Cras justo odio</span>
-          <button class="btn btn-sm btn-danger rounded-0">-</button>
-        </li>
-        <li class="list-group-item d-flex">
-          <span class="flex-grow-1">Cras justo odio</span>
-          <button class="btn btn-sm btn-danger rounded-0">-</button>
+        <li class="list-group-item d-flex" *ngFor="let todo of todos$ | async">
+          <span class="flex-grow-1">{{todo.title}}</span>
+          <button class="btn btn-sm btn-danger rounded-0" (click)="onDeleteClickHandler(todo.id)">-</button>
         </li>
       </ul>
     </div>

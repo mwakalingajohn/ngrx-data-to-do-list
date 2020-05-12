@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Todo } from '../todo';
 
 @Component({
   selector: 'app-todos',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodosComponent implements OnInit {
 
+
+  todos$: Observable<Todo[]>
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onDeleteClickHandler(id:string):void{
+
+  }
+
+  fetchTodos():void{
+
+  }
 }

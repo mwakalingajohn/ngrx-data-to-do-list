@@ -13,6 +13,7 @@ import { TodosComponent } from './todos/todos.component';
 import { NewTodoComponent } from './new-todo/new-todo.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
