@@ -1,6 +1,6 @@
 <div class="container-fluid border p-2 mt-3">
   <div class="row">
-    <form (ngSubmit)="onTodoFormSubmit()" [formGroup]="todoForm">
+    <form (ngSubmit)="onTodoFormSubmit()" class="col-md-12 row" [formGroup]="todoForm">
       <div class="form-group col-md-12">
         <label for="">Add new to do</label>
         <input type="text" class="form-control rounded-0" formControlName="title" placeholder="To do..">
