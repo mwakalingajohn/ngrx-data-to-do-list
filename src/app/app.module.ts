@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EntityDataModule } from '@ngrx/data';
+import { EntityDataModule, DefaultDataServiceConfig } from '@ngrx/data';
 import { entityConfig } from './entity-metadata';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -15,6 +15,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+const defaultDataServiceConfig: DefaultDataServiceConfig = {
+  root: 'http://localhost:3000/',
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,12 +31,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    EntityDataModule.forRoot(entityConfig),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EntityDataModule.forRoot(entityConfig),
   ],
-  providers: [],
+  providers: [
+    { provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

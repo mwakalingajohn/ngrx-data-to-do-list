@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { EntityCollectionServiceBase, EntityCollectionServiceElementsFactory } from '@ngrx/data';
+import { Todo } from './todo';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
-
-  constructor() { }
+export class TodoService extends EntityCollectionServiceBase<Todo> {
+  constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
+    super('Todos', serviceElementsFactory);
+  }
 }

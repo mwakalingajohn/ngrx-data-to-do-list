@@ -1,8 +1,12 @@
 import { EntityMetadataMap, EntityDataModuleConfig } from '@ngrx/data';
 
-const entityMetadata: EntityMetadataMap = {};
+const entityMetadata: EntityMetadataMap = {
+  Todos: {},
+};
 
-const pluralNames = {  };
+const pluralNames = {
+  Todos: 'Todos'
+};
 
 export const entityConfig: EntityDataModuleConfig = {
   entityMetadata,
