@@ -9,14 +9,22 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { TodosComponent } from './todos/todos.component';
+import { NewTodoComponent } from './new-todo/new-todo.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TodosComponent,
+    NewTodoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
     EntityDataModule.forRoot(entityConfig),
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
