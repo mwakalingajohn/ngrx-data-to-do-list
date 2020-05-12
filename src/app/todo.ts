@@ -1,0 +1,9 @@
+export class Todo{
+  id?: string
+  title: string
+  completed: boolean
+
+  constructor(){
+    this.completed = false
+  }
+}
