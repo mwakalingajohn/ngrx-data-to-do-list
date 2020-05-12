@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import * as fromState from './reducers';
+import { TodosEffects } from './todos.effects';
 
 @NgModule({
   declarations: [
@@ -29,11 +30,10 @@ import * as fromState from './reducers';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    EntityDataModule.forRoot(entityConfig),
     StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([TodosEffects]),
+    StoreModule.forRoot(fromState.reducers),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    StoreModule.forFeature(fromState.stateFeatureKey, fromState.reducers, { metaReducers: fromState.metaReducers })
   ],
   providers: [],
   bootstrap: [AppComponent]

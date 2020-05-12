@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from "@angular/forms";
+import { Store } from '@ngrx/store';
+import { State } from '../reducers';
+import * as TodosActions from "../todos.actions"
 
 @Component({
   selector: 'app-new-todo',
@@ -9,7 +12,8 @@ import { FormGroup, FormBuilder, FormControl } from "@angular/forms";
 export class NewTodoComponent implements OnInit {
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private store:Store<State>
   ) { }
 
   todoForm: FormGroup = this.formBuilder.group({
@@ -21,6 +25,9 @@ export class NewTodoComponent implements OnInit {
   }
 
   onTodoFormSubmit(){
+    let todo = this.todoForm.value
+    todo.completed = false
+    this.store.dispatch(TodosActions.addTodo({todo:todo}))
     this.todoForm.reset()
   }
 }
